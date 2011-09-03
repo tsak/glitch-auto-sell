@@ -6,10 +6,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-	<title></title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+  <base href="{$html->url('/', true)}" />
+	<title>Glitch Autosell</title>
+	<meta name="description" content="A tool to create Glitch auctions automatically, based on user definable criteria.">
+	<meta name="author" content="tsak">
 
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -21,18 +21,27 @@
 <body>
 	<div id="header-container">
 		<header class="wrapper">
-			<h1 id="title">Glitch Autosell<sup>beta</sup></h1>
+			<h1 id="title"><a href="{$html->url('/')}">Glitch Autosell</a><sup>beta</sup></h1>
 			<nav>
 				<ul>
-					<li><a href="#">Some</a></li>
-					<li><a href="#">navigation</a></li>
-					<li><a href="#">links</a></li>
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Help</a></li>
 				</ul>
 			</nav>
 		</header>
 	</div>
 	<div id="main" class="wrapper">
-        {$content_for_layout}
+    <article>
+      <aside>
+        {if $session->read('Glitch.player.avatar_url')}
+          <img src="{$session->read('Glitch.player.avatar_url')}" />
+        {else}
+          Before you can use this application, you have to authenticate in order to allow it to create auctions for you. Please click <a href="http://api.glitch.com/oauth2/authorize?response_type=code&amp;client_id={Configure::read('Glitch.api.key')}&amp;redirect_uri={$html->url('/auth/response', true)|escape}&amp;scope=write&amp;state=test">here</a> to start authenticating.
+        {/if}
+      </aside>
+      {$content_for_layout}
+    </article>
 	</div>
 	<div id="footer-container">
 		<footer class="wrapper">

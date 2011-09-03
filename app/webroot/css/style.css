@@ -247,6 +247,11 @@ h3{font-size: 30px;}
     top: -1em;
 }
 
+#title a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 header nav{
 	float:right;
 	margin-top:100px;
