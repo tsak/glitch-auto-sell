@@ -1,17 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <title>Glitch Autosell</title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
-  {$revision = 1}
-  {$html->css("site.css?$revision")}
-  {$javascript->link('jquery-1.6.2.min.js')}
-  {$javascript->link('site.js')}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="js/libs/modernizr-2.0.min.js"></script>
+	<script src="js/libs/respond.min.js"></script>
 </head>
 <body>
-  {$content_for_layout}
+	<div id="header-container">
+		<header class="wrapper">
+			<h1 id="title">Glitch Autosell<sup>beta</sup></h1>
+			<nav>
+				<ul>
+					<li><a href="#">Some</a></li>
+					<li><a href="#">navigation</a></li>
+					<li><a href="#">links</a></li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+	<div id="main" class="wrapper">
+        {$content_for_layout}
+	</div>
+	<div id="footer-container">
+		<footer class="wrapper">
+			<h3>&#8353;{$smarty.now|date_format:'Y'}</h3>
+		</footer>
+	</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+<script src="js/script.js"></script>
+{*<script>*}
+{*	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID*}
+{*	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;*}
+{*	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';*}
+{*	s.parentNode.insertBefore(g,s)}(document,'script'));*}
+{*</script>*}
+
+<!--[if lt IE 7 ]>{literal}
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+{/literal}<![endif]-->
+
 </body>
 </html>
-{$view->element('sqldump')}
