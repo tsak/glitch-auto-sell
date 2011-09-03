@@ -7,26 +7,25 @@
 
 class AuthController extends AppController {
 
-	var $name = 'Auth';
+  var $name = 'Auth';
 
-    var $uses = array('GlitchAuth', 'GlitchPlayer');
+  var $uses = array('GlitchApi', 'Player');
 
-	function index() {
-        debug($this->GlitchAuth);
-        $test = $this->GlitchAuth->check();
-        echo $test;
-	}
+  function index() {
+    $test = $this->GlitchApi->auth_check($this->Session->read('Glitch.api.access_token'));
+    debug($test);
+  }
 
   function response() {
     if(!empty($this->params['url']['code'])) {
       App::import('Core', 'HttpSocket');
       $httpSocket = new HttpSocket();
       $response = $httpSocket->post('http://api.glitch.com/oauth2/token', array(
-          'grant_type'	=> 'authorization_code',
-          'code' => $this->params['url']['code'],
-          'client_id'	=> Configure::read('Glitch.api.key'),
-          'client_secret' => Configure::read('Glitch.api.secret'),
-          'redirect_uri' => Router::url('/auth/response', true),
+        'grant_type' => 'authorization_code',
+        'code' => $this->params['url']['code'],
+        'client_id' => Configure::read('Glitch.api.key'),
+        'client_secret' => Configure::read('Glitch.api.secret'),
+        'redirect_uri' => Router::url('/auth/response', true),
       ));
       $response = json_decode($response, true);
       if(isset($response['error'])) {
@@ -44,8 +43,17 @@ class AuthController extends AppController {
   }
 
   function success() {
-    $player = $this->GlitchPlayer->info($this->Session->read('Glitch.api.access_token'));
-    $this->Session->write('Glitch.player', $player);
-    $this->set('player', $player);
+    $glitch_player = $this->GlitchApi->players_info($this->Session->read('Glitch.api.access_token'));
+    $this->Session->write('Glitch.player', $glitch_player);
+    if(($player = $this->Player->findByTsid($glitch_player['player_tsid'])) !== false) {
+      $this->Player->id = $player['Player']['id'];
+    }
+    $this->Player->save(array(
+        'name' => $glitch_player['player_name'],
+        'tsid' => $glitch_player['player_tsid'],
+        'oauth2_token' => $this->Session->read('Glitch.api.access_token'),
+      ));
+    $this->Player->save();
+    $this->set('player', $glitch_player);
   }
 }

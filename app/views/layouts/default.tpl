@@ -35,6 +35,9 @@
     <article>
       <aside>
         {if $session->read('Glitch.player.avatar_url')}
+          <form method="get" action="{$html->url('/rules/create')}">
+            <button>Create a new rule</button>
+          </form>
           <img src="{$session->read('Glitch.player.avatar_url')}" />
         {else}
           Before you can use this application, you have to authenticate in order to allow it to create auctions for you. Please click <a href="http://api.glitch.com/oauth2/authorize?response_type=code&amp;client_id={Configure::read('Glitch.api.key')}&amp;redirect_uri={$html->url('/auth/response', true)|escape}&amp;scope=write&amp;state=test">here</a> to start authenticating.
