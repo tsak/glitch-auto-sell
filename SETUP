@@ -1,0 +1,33 @@
+SETUP
+
+1. Create local MySQL user and database
+
+Collation: utf8_general_ci
+DB: glitch
+User: glitch
+Pass: bytQeGTfcwX7
+
+Make sure to run the following SQL statement after creation
+
+% ALTER DATABASE `glitch` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+2. Create symbolic links in app/config/
+
+# ln -s core.dev.php core.php
+
+3. Create the session table
+
+You can either run the following command in the root folder
+
+# cake/console/cake schema create Sessions
+
+Or this bit of SQL:
+
+DROP TABLE IF EXISTS cake_sessions;
+CREATE TABLE cake_sessions (
+  id varchar(255) NOT NULL,
+  `data` text,
+  expires int(11) default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
