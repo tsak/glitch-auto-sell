@@ -1,4 +1,6 @@
 <header>
-  <h2>Create a new auction rule</h2>
+  <h2>1. Select a type of item</h2>
 </header>
-<p>Please select a stack from your inventory</p>
+<p>Please select an (auctionable) item from your inventory. In the next step, you will set price and quantity.</p>
+{*debug($inventory)*}
+{$view->element('inventory', ['inventory' => $inventory])}

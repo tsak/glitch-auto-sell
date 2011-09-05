@@ -52,4 +52,49 @@ class GlitchApi extends AppModel {
     return parent::find('all', array());
   }
 
+  /**
+   * Returns an array of items.
+   *
+   * @param string $token
+   * @return array $player_inventory
+   */
+  function players_inventory($token = '', $defs = 0) {
+    $this->request['uri'] = array(
+      'path' => '/simple/players.inventory',
+      'query' => array(
+        'oauth_token' => $token,
+        'defs' => intval($defs)
+      )
+    );
+    return parent::find('all', array());
+  }
+
+  /**
+   * For later use.
+   *
+   * @param string $tsid
+   * @return array of player avatar animation information
+   */
+  function players_getAnimations($tsid = '') {
+    $this->request['uri'] = array(
+      'path' => '/simple/players.getAnimations',
+      'query' => array(
+        'player_tsid' => $tsid
+      )
+    );
+    return parent::find('all', array());
+  }
+
+  function auctions_create($token, $stack_tsid, $count, $cost) {
+    $this->request['uri'] = array(
+      'path' => '/simple/auctions.create',
+      'query' => array(
+        'oauth_token' => $token,
+        'stack_tsid' => $stack_tsid,
+        'count' => $count,
+        'cost' => $cost
+      )
+    );
+    return parent::find('all', array());
+  }
 }

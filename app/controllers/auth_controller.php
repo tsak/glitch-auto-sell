@@ -12,8 +12,7 @@ class AuthController extends AppController {
   var $uses = array('GlitchApi', 'Player');
 
   function index() {
-    $test = $this->GlitchApi->auth_check($this->Session->read('Glitch.api.access_token'));
-    debug($test);
+    $this->set('status', $this->GlitchApi->auth_check($this->Session->read('Glitch.api.access_token')));
   }
 
   function response() {
@@ -53,7 +52,7 @@ class AuthController extends AppController {
         'tsid' => $glitch_player['player_tsid'],
         'oauth2_token' => $this->Session->read('Glitch.api.access_token'),
       ));
-    $this->Player->save();
+    $this->Session->write('player_id', $this->Player->id);
     $this->set('player', $glitch_player);
   }
 }

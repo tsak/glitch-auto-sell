@@ -1,0 +1,1 @@
+<a href="http://api.glitch.com/oauth2/authorize?response_type=code&amp;client_id={Configure::read('Glitch.api.key')}&amp;redirect_uri={$html->url('/auth/response', true)|escape}&amp;scope=write&amp;state=test">{$blurb|default:'here'}</a>

@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <base href="{$html->url('/', true)}" />
-	<title>Glitch Autosell</title>
+	<title>Glitch Autosell | {$title_for_layout}</title>
 	<meta name="description" content="A tool to create Glitch auctions automatically, based on user definable criteria.">
 	<meta name="author" content="tsak">
 
@@ -15,13 +15,13 @@
 
 	<link rel="stylesheet" href="css/style.css">
 
-	<script src="js/libs/modernizr-2.0.min.js"></script>
-	<script src="js/libs/respond.min.js"></script>
+	<script src="js/modernizr-2.0.min.js"></script>
+	<script src="js/respond.min.js"></script>
 </head>
 <body>
 	<div id="header-container">
 		<header class="wrapper">
-			<h1 id="title"><a href="{$html->url('/')}">Glitch Autosell</a><sup>beta</sup></h1>
+			<h1 id="title"><a href="{$html->url('/')}">Glitch Autosell</a><sup>alpha</sup></h1>
 			<nav>
 				<ul>
 					<li><a href="#">FAQ</a></li>
@@ -40,7 +40,7 @@
           </form>
           <img src="{$session->read('Glitch.player.avatar_url')}" />
         {else}
-          Before you can use this application, you have to authenticate in order to allow it to create auctions for you. Please click <a href="http://api.glitch.com/oauth2/authorize?response_type=code&amp;client_id={Configure::read('Glitch.api.key')}&amp;redirect_uri={$html->url('/auth/response', true)|escape}&amp;scope=write&amp;state=test">here</a> to start authenticating.
+          Before you can use this application, you have to authenticate in order to allow it to create auctions for you. Please click {$view->element('auth_link')} to start authenticating.
         {/if}
       </aside>
       {$content_for_layout}
@@ -48,11 +48,15 @@
 	</div>
 	<div id="footer-container">
 		<footer class="wrapper">
-			<h3>&#8353;{$smarty.now|date_format:'Y'}</h3>
+      <p>&#8353;{$smarty.now|date_format:'Y'} - not affilliated with Tiny Speck</p>
+      <ul>
+        <li><a href="http://glitch.com/">Glitch</a></li>
+        <li><a href="http://tinyspeck.com/">Tiny Speck</a></li>
+      </ul>
 		</footer>
 	</div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.6.2.min.js"><\/script>')</script>
 
 <script src="js/script.js"></script>
 {*<script>*}

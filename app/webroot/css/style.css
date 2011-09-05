@@ -49,8 +49,8 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
    Links
    ========================================================================== */
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
+a { color: #E44D26; }
+a:visited { color: #F16529; }
 a:focus { outline: thin dotted; }
 
 /* Improve readability when focused and hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test */
@@ -306,13 +306,128 @@ article header{
 	        box-shadow:0 -40px 40px -40px #AAA;
 }
 
-#footer-container footer{
+#footer-container footer, #footer-container a{
 	color:white;
 }
 
+#footer-container ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
+.pale, .pale a {
+  color: #cccccc;
+}
 
+.strike {
+  color: red;
+  text-decoration: line-through;
+}
 
+form {
+  font:16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+form label {
+  display: block;
+}
+
+form div.input + div.input {
+  margin-top: 1em;
+}
+
+form input {
+  width: 620px;
+}
+
+form input.small {
+  width: 75px;
+}
+
+#rules {
+  list-style-type: none;
+  font:16px/26px Helvetica, Helvetica Neue, Arial;
+  margin: 0;
+  padding: 0;
+}
+
+ul.inventory, ul.inventory ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 620px;
+}
+
+ul.inventory li {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+ul.inventory li a {
+  display: block;
+  border: 1px solid #cccccc;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  text-decoration: none;
+  color: #666666;
+  background: #ffffff;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 13px;
+}
+
+ul.inventory li a.no-auction {
+  border-style: dashed;
+}
+
+ul.inventory li a.no-auction:hover {
+  background: #ffffff;
+}
+
+ul.inventory li a.no-auction img, ul.inventory li a.no-auction span {
+  opacity: .5;
+}
+
+ul.inventory li a:hover {
+  border-color: #F16529;
+}
+
+ul.inventory li a img, ul li.bag strong.icon img {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+
+ul.inventory li a span {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background: #ffffff;
+  background: rgba(255,255,255,.75);
+  padding: 1px 4px;
+}
+
+ul li.bag {
+  background: #f0f0f0;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+ul li.bag strong.icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+ul li.bag strong.icon img {
+  opacity: .75;
+}
 
 /* =============================================================================
    Non-semantic helper classes
