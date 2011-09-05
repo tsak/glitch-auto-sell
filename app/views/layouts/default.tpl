@@ -49,11 +49,12 @@
 	</div>
 	<div id="footer-container">
 		<footer class="wrapper">
-      <p>&#8353;{$smarty.now|date_format:'Y'} - not affilliated with Tiny Speck</p>
-      <ul>
+      <ul class="clearfix">
         <li><a href="http://glitch.com/">Glitch</a></li>
         <li><a href="http://tinyspeck.com/">Tiny Speck</a></li>
+        <li><a href="https://github.com/tsak/glitch-auto-sell">Glitch Autosell on Github</a></li>
       </ul>
+      <p>&#8353;{$smarty.now|date_format:'Y'} - not affilliated with Tiny Speck</p>
 		</footer>
 	</div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>

@@ -306,7 +306,8 @@ article header{
 
 #footer-container{
 	background-color:#f16529;
-	height:240px;
+	/*height:240px;*/
+  padding-bottom: 20px;
 	border-top:20px solid #e44d26;
 	margin-top:50px;
 	-webkit-box-shadow:0 -40px 40px -40px #AAA;
@@ -318,10 +319,26 @@ article header{
 	color:white;
 }
 
+#footer-container footer {
+  position: relative;
+}
+
 #footer-container ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  position: absolute;
+  right: 0px;
+}
+
+#footer-container ul li {
+  float: right;
+}
+
+#footer-container ul li + li {
+  margin-right: .5em;
+  padding-right: .5em;
+  border-right: 1px solid white;
 }
 
 .pale, .pale a {
