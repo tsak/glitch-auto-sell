@@ -2,32 +2,26 @@ SETUP
 
 1. Create local MySQL user and database
 
-Collation: utf8_general_ci
-DB: glitch
-User: glitch
-Pass: bytQeGTfcwX7
+2. Import app/config/schema/glitch.sql into the database you've just created.
 
-Make sure to run the following SQL statement after creation
+3. Copy app/config/database.sample.php to app/config/database.php and edit line 80 - 82.
 
-% ALTER DATABASE `glitch` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		'login' => '', // Database username
+		'password' => '', // Database password
+		'database' => '', // Database
 
-2. Create symbolic links in app/config/
+4. Copy app/config/core.sample.php to app/config/core.php and edit...
 
-# ln -s core.dev.php core.php
+   Line 204: Configure::write('Security.salt', '');
+   Add a random 40 byte string of Numbers and mixed case letters
 
-3. Create the session table
+   Line 209: Configure::write('Security.cipherSeed', '');
+   Add a random 29 digit number
 
-You can either run the following command in the root folder
+   Line 322-EOF: Obtain an API Key from http://api.glitch.com/keys/new/ and fill the blanks
+   Configure::write('Glitch.api', array(
+    'key' => '',
+    'secret' => '',
+   ));
 
-# cake/console/cake schema create Sessions
-
-Or this bit of SQL:
-
-DROP TABLE IF EXISTS cake_sessions;
-CREATE TABLE cake_sessions (
-  id varchar(255) NOT NULL,
-  `data` text,
-  expires int(11) default NULL,
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
+5. Deploy somewhere in your webroot
