@@ -24,9 +24,10 @@
 			<h1 id="title"><a href="{$html->url('/')}">Glitch Autosell</a><sup>alpha</sup></h1>
 			<nav>
 				<ul>
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Help</a></li>
+          {if $session->read('Glitch.player.avatar_url')}<li><a href="{$html->url('/rules')}">Your rules</a></li>{/if}
+          <li><a href="{$html->url('/pages/faq')}">FAQ</a></li>
+					<li><a href="{$html->url('/pages/about')}">About</a></li>
+					<li><a href="{$html->url('/pages/contact')}">Contact</a></li>
 				</ul>
 			</nav>
 		</header>
