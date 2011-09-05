@@ -25,3 +25,5 @@ SETUP
    ));
 
 5. Deploy somewhere in your webroot
+
+6. Make sure app/tmp is writable
