@@ -46,6 +46,7 @@ class AuthController extends AppController {
     $this->Session->write('Glitch.player', $glitch_player);
     if(($player = $this->Player->findByTsid($glitch_player['player_tsid'])) !== false) {
       $this->Player->id = $player['Player']['id'];
+      $this->set('returning_player', true);
     }
     $this->Player->save(array(
         'name' => $glitch_player['player_name'],
