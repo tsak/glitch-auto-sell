@@ -53,8 +53,10 @@
         <li><a href="http://glitch.com/">Glitch</a></li>
         <li><a href="http://tinyspeck.com/">Tiny Speck</a></li>
         <li><a href="https://github.com/tsak/glitch-auto-sell">Glitch Autosell on Github</a></li>
+        {if Configure::read('debug') == 2}<li><a href="#" onclick="$('#sqldump').toggle();void(0);">Show SQL dump</a></li>{/if}
       </ul>
       <p>&#8353;{$smarty.now|date_format:'Y'} - not affilliated with Tiny Speck</p>
+      {if Configure::read('debug') == 2}<div id="sqldump" style="display: none;">{$view->element('sqldump')}</div>{/if}
 		</footer>
 	</div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
