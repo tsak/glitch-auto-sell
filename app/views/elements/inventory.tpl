@@ -9,7 +9,7 @@
     {if $slot}
       <li>
         {* TODO: Find out if some items can not be auctioned and fill regex accordingly *}
-        {if !$slot.item_def.base_cost}
+        {if !$slot.item_def.base_cost || preg_match('/(element_*)/',$slot.item_def.class_tsid)}
           <a class="no-auction"><img src="{$slot.item_def.iconic_url}" title="{$slot.label|escape} (can not be auctioned)" /><span>{$slot.count}</span></a>
         {else}
           <a href="{$html->url("/rules/add/`$slot.tsid`")}"><img src="{$slot.item_def.iconic_url}" title="{$slot.label|escape}" /><span>{$slot.count}</span></a>
