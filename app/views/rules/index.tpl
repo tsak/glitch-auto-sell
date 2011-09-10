@@ -14,7 +14,7 @@
     <a href="{$html->url(['action' => 'activate', $rule.Rule.id, 0])}">Deactivate</a>
     {/if}
     {if $rule.Rule.auction_count}
-      <a href="{$html->url(['action' => 'auctions', $rule.Rule.id])}">Auctions</a>
+      <a href="{$html->url(['action' => 'auctions', $rule.Rule.id])}">Auctions ({$rule.Rule.auction_count})</a>
     {/if}
     <a href="{$html->url(['action' => 'delete', $rule.Rule.id])}" class="delete">Delete</a>
   </li>
