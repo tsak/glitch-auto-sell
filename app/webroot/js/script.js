@@ -13,5 +13,5 @@ $(document).ready(function () {
   });
 
   // Make external links open in a new window or tab
-  $("a[href^='http']").attr('target','_blank');
+  $("a[href^='http'][rel!='this-window']").attr('target','_blank');
 });
