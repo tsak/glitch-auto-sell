@@ -11,4 +11,6 @@ class Auction extends AppModel {
   var $belongsTo = array(
     'Rule' => array('counterCache' => true),
   );
+
+  var $order = "created DESC";
 }
