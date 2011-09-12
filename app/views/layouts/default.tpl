@@ -13,7 +13,10 @@
 
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
+	{*
 	<link rel="stylesheet" href="css/style.css">
+	*}
+  {$html->css('style')}
 
 	<script src="js/modernizr-2.0.min.js"></script>
 	<script src="js/respond.min.js"></script>
@@ -27,7 +30,8 @@
           {if $session->read('Glitch.player.avatar_url')}<li><a href="{$html->url('/rules')}">Your rules</a></li>{/if}
           <li><a href="{$html->url('/pages/faq')}">FAQ</a></li>
 					<li><a href="{$html->url('/pages/about')}">About</a></li>
-					<li><a href="{$html->url('/pages/contact')}">Contact</a></li>
+            <li><a href="{$html->url('/pages/contact')}">Contact</a></li>
+            <li><a href="{$html->url('/pages/credits')}">Credits</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -36,9 +40,7 @@
     <article>
       <aside>
         {if $session->read('Glitch.player.avatar_url')}
-          <form method="get" action="{$html->url('/rules/create')}">
-            <button>Create a new rule</button>
-          </form>
+          <p><a href="{$html->url(['action' => 'create'])}" class="action add">Create a new rule</a></p>
           <img src="{$session->read('Glitch.player.avatar_url')}" />
         {else}
           Before you can use this application, you have to authenticate in order to allow it to create auctions for you. Please click {$view->element('auth_link')} to start authenticating.
@@ -53,7 +55,8 @@
         <li><a href="http://glitch.com/">Glitch</a></li>
         <li><a href="http://tinyspeck.com/">Tiny Speck</a></li>
         <li><a href="https://github.com/tsak/glitch-auto-sell">Glitch Autosell on Github</a></li>
-        {if Configure::read('debug') == 2}<li><a href="#" onclick="$('#sqldump').toggle();void(0);">Show SQL dump</a></li>{/if}
+        <li><a href="http://www.glitch-strategy.com/wiki/Glitch_Wiki">Glitch Wiki</a></li>
+        {if Configure::read('debug') == 2}<li><a href="#" onclick="$('#sqldump').toggle(); return false;">Show SQL dump</a></li>{/if}
       </ul>
       <p>&#8353;{$smarty.now|date_format:'Y'} - not affilliated with Tiny Speck</p>
       {if Configure::read('debug') == 2}<div id="sqldump" style="display: none;">{$view->element('sqldump')}</div>{/if}

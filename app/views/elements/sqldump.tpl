@@ -25,7 +25,6 @@
     }
     
     .cake-sql-log {
-    	background: #f4f4f4;
     	border: 1px solid;
     	border-collapse: collapse;
     }

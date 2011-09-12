@@ -18,10 +18,22 @@ class RulesController extends AppController {
         'Rule.player_id' => $this->Session->read('player_id')
       ),
     )));
+
+    // Retrieve player statistics
+    $player_id = $this->Session->read('player_id');
+    if (($stats = Cache::read('player_stats' . $player_id)) === false) {
+      $stats = array(
+        'total_auction_count' => $this->Rule->field('SUM(Rule.auction_count)', array('Rule.player_id' => $player_id))
+      );
+      Cache::write('player_stats' . $this->Session->read('player_id'), $stats);
+    }
+    $this->set('stats', $stats);
+    
 	}
 
   function create() {
     $this->set('inventory', $this->get_player_inventory(0, 1));
+    $this->set('existing_rules', $this->Rule->find('list', array('fields'=> 'Rule.class_tsid, Rule.id', 'group' => 'Rule.class_tsid')));
   }
 
   function add($tsid = '') {
@@ -53,7 +65,12 @@ class RulesController extends AppController {
   }
 
   function confirm($id) {
-    $this->set('rule', $this->Rule->read(null, $id));
+    $this->set('rule', $this->Rule->find('first', array(
+      'conditions' => array(
+        'Rule.id' => $id,
+        'Rule.player_id' => $this->Session->read('player_id')
+      )
+    )));
   }
 
   function activate($id, $status = 1) {
@@ -74,7 +91,12 @@ class RulesController extends AppController {
         $this->redirect(array('action' => 'index'));
       }
     }
-    $this->data = $this->Rule->read(null, $id);
+    $this->data = $this->Rule->find('first', array(
+      'conditions' => array(
+        'Rule.id' => $id,
+        'Rule.player_id' => $this->Session->read('player_id')
+      )
+    ));
   }
 
   function get_player_inventory($id = 0, $defs = 0, $ignore_cache = false) {
@@ -93,7 +115,12 @@ class RulesController extends AppController {
   }
 
   function auctions($id) {
-    $this->set('rule', $this->Rule->findById($id));
+    $this->set('rule', $this->Rule->find('first', array(
+      'conditions' => array(
+        'Rule.id' => $id,
+        'Rule.player_id' => $this->Session->read('player_id')
+      )
+    )));
   }
 
   private function find_item($tsid = '', $defs = 0) {

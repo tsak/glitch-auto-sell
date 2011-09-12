@@ -1,5 +1,6 @@
-<header>
+<header class="no-shadow">
   <h2>3. Confirm and activate</h2>
+  <p><a href="{$html->url(['action' => 'edit', $rule.Rule.id])}" class="action return">Edit the rule</a></p>
 </header>
 <p>Almost done. Please review your auction rule below.</p>
 <p>

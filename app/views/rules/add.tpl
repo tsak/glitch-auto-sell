@@ -1,12 +1,9 @@
-<header>
+<header class="no-shadow">
   <h2>2. Set price and quantity</h2>
+  <p><a href="{$html->url(['action' => 'create'])}" class="action return">Select a different item</a></p>
 </header>
-<p>
-  <img src="{$item.item_def.iconic_url}" align="left" style="margin-right: 10px;" />
-  You've selected <a href="http://www.glitch-strategy.com/w/index.php?title=Special%3ASearch&search={$item.item_def.name_single|escape:'url'}">{$item.item_def.name_plural|escape}</a>
-  <span class="pale">(<a href="{$html->url(['action' => 'create'])}">Select a different item</a>)</span><br />
-  Worth about <strong>{$item.item_def.base_cost}</strong>&#8353;, fits <strong>{$item.item_def.max_stack}</strong> in a backpack slot.
-</p>
+{$view->element('item_summary', ['glitch_item' => $item.item_def])}
+
 {$form->create('Rule', ['url' => ['action' => 'add', $item.tsid]])}
 {$form->input('title', ['label' => 'Title', 'value' => "Autosell `$item.item_def.name_plural`"])}
 {$form->input('quantity', ['label' => 'Quantity <span class="pale">(Defaults to max. slot capacity)</span>', 'value' => $item.item_def.max_stack, 'class' => 'small'])}

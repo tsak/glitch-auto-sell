@@ -11,6 +11,7 @@ class Rule extends AppModel {
   var $hasMany = array(
     'Auction' => array(
       'dependent' => true,
+      'order' => 'Auction.created DESC',
     )
   );
 }

@@ -304,6 +304,14 @@ article header{
 	        box-shadow:0 45px 60px -60px #AAA;
 }
 
+.no-shadow {
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+
 #footer-container{
 	background-color:#f16529;
 	/*height:240px;*/
@@ -408,6 +416,10 @@ ul.inventory li a.no-auction {
   border-style: dashed;
 }
 
+ul.inventory li a.existing {
+  background: #fcd8c6;
+}
+
 ul.inventory li a.no-auction:hover {
   background: #ffffff;
 }
@@ -452,6 +464,109 @@ ul li.bag strong.icon {
 
 ul li.bag strong.icon img {
   opacity: .75;
+}
+
+table {
+  width: 680px;
+  font:16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+table tr:hover {
+  background: #f0f0f0;
+}
+
+table th {
+  text-align: left;
+}
+
+table td.number, table td.info {
+  text-align: center;
+}
+
+table td.price {
+  text-align: right;
+}
+
+table th + th, table td + td {
+  padding-left: 15px;
+}
+
+table tr.inactive td {
+  opacity: .5;
+}
+
+table thead tr {
+  border-bottom: 1px solid #cccccc;
+}
+
+table tr + tr {
+  border-top: 1px solid #cccccc;
+}
+
+td.actions {
+  width: 79px;
+}
+
+.actions a {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: no-repeat;
+  text-indent: -9999px;
+  float: left;
+  overflow: hidden;
+}
+
+.actions a + a {
+  margin-left: 5px;
+}
+
+.actions a.edit {
+  background-image: url(../img/edit.png);
+}
+
+.actions a.delete {
+  background-image: url(../img/delete.png);
+}
+
+.actions a.activate {
+  background-image: url(../img/activate.png);
+}
+
+.actions a.deactivate {
+  background-image: url(../img/deactivate.png);
+}
+
+.actions a.auctions {
+  background-image: url(../img/auctions.png);
+}
+
+.actions a.cancel {
+  background-image: url(../img/cancel.png);
+}
+
+.actions a.view {
+  background-image: url(../img/view.png);
+}
+
+a.action {
+  padding-left: 20px;
+  background:  no-repeat left;
+}
+
+a.add { background-image: url(../img/add.png); }
+a.edit { background-image: url(../img/edit.png); }
+a.return { background-image: url(../img/return.png); }
+
+aside a.add {
+  background-image: url(../img/add_inverted.png);
+}
+
+#credits {
+  font:16px/26px Helvetica, Helvetica Neue, Arial;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* =============================================================================
