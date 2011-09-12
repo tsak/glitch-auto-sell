@@ -34,8 +34,6 @@ class CronShell extends Shell {
 
     // Iterate over all found player records
     foreach($players as $player) {
-      echo $player['Player']['name'].' '.$player['Player']['tsid']."\n";
-
       $inventory = $RulesController->get_player_inventory($player['Player']['id'], 0, true);
       $flat_inventory = array();
       foreach($inventory['contents'] as $slot_id => $slot) {
@@ -77,8 +75,6 @@ class CronShell extends Shell {
       foreach($flat_inventory as $item) {
         if(array_key_exists($item['class_tsid'], $rules_hash)) {
           if($item['count'] >= $rules_hash[$item['class_tsid']]['q']) {
-            $this->out($item['count'] . ' x ' .$item['label'] . ' found');
-
             // List the item
             $auction = $this->GlitchApi->auctions_create(
               $player['Player']['oauth2_token'],
@@ -86,6 +82,8 @@ class CronShell extends Shell {
               $rules_hash[$item['class_tsid']]['q'],
               $rules_hash[$item['class_tsid']]['p']
             );
+
+            $log_entry = '[' . $player['Player']['tsid'] . '] ' . $player['Player']['name'] . ' - ' . $rules_hash[$item['class_tsid']]['q'] . ' x ' . $item['label'] . ' for ' . $rules_hash[$item['class_tsid']]['p'] . ' currants (' . $item['count'] . ' items found, rule #' . $rules_hash[$item['class_tsid']]['id'] . ')';
 
             // Write history entry
             if($auction['ok']) {
@@ -98,12 +96,15 @@ class CronShell extends Shell {
                   'endtime' => date('Y-m-d H:i:s', strtotime('+24 hours')),
                 )
               ));
+              CakeLog::write('cron', $log_entry);
+            } else {
+              CakeLog::write('cron_error', $log_entry . ' - Error: ' . $auction['error']);
             }
           }
         }
       }
 
-      unset($flat_inventory, $rules_hash);
+      unset($flat_inventory, $rules_hash, $log_entry);
     }
   }
 }
