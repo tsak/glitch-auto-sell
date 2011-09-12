@@ -33,7 +33,13 @@ class RulesController extends AppController {
 
   function create() {
     $this->set('inventory', $this->get_player_inventory(0, 1));
-    $this->set('existing_rules', $this->Rule->find('list', array('fields'=> 'Rule.class_tsid, Rule.id', 'group' => 'Rule.class_tsid')));
+    $this->set('existing_rules', $this->Rule->find('list', array(
+      'fields'=> 'Rule.class_tsid, Rule.id',
+      'group' => 'Rule.class_tsid',
+      'conditions' => array(
+        'Rule.player_id' => $this->Session->read('player_id')
+      )
+    )));
   }
 
   function add($tsid = '') {
