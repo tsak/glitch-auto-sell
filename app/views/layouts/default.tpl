@@ -65,18 +65,16 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/jquery-1.6.2.min.js"><\/script>')</script>
 
-{*
-<script src="js/script.js"></script>
-*}
-
 {$javascript->link('script')}
 
-{*<script>*}
-{*	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID*}
-{*	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;*}
-{*	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';*}
-{*	s.parentNode.insertBefore(g,s)}(document,'script'));*}
-{*</script>*}
+{if Configure::read('GoogleAnalytics.account_number')}
+<script>
+	var _gaq=[['_setAccount','{Configure::read('GoogleAnalytics.account_number')}'],['_trackPageview']];
+	(function(d,t){ var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s) }(document,'script'));
+</script>
+{/if}
 
 <!--[if lt IE 7 ]>{literal}
 	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>

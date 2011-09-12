@@ -18,11 +18,14 @@ SETUP
    Line 209: Configure::write('Security.cipherSeed', '');
    Add a random 29 digit number
 
-   Line 322-EOF: Obtain an API Key from http://api.glitch.com/keys/new/ and fill the blanks
+   Line 322-325: Obtain an API Key from http://api.glitch.com/keys/new/ and fill the blanks
    Configure::write('Glitch.api', array(
     'key' => '',
     'secret' => '',
    ));
+
+   (Optional) Line 328: Uncomment and add a Google Analytics account number
+   Configure::write('GoogleAnalytics.account_number', '');
 
 5. Deploy somewhere in your webroot
 

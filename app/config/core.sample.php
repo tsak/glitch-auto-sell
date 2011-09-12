@@ -323,3 +323,6 @@
     'key' => '',
     'secret' => '',
   ));
+
+  // Optional - Google Analytics
+  // Configure::write('GoogleAnalytics.account_number', '');
