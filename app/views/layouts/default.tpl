@@ -40,7 +40,7 @@
     <article>
       <aside>
         {if $session->read('Glitch.player.avatar_url')}
-          <p><a href="{$html->url(['constroller' => 'rules', 'action' => 'create'])}" class="action add">Create a new rule</a></p>
+          <p><a href="{$html->url(['controller' => 'rules', 'action' => 'create'])}" class="action add">Create a new rule</a></p>
           <img src="{$session->read('Glitch.player.avatar_url')}" />
         {else}
           Before you can use this application, you have to authenticate in order to allow it to create auctions for you. Please click {$view->element('auth_link')} to start authenticating.
