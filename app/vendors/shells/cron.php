@@ -94,6 +94,8 @@ class CronShell extends Shell {
                   'ts_auction_id' => $auction['id'],
                   'title' => $rules_hash[$item['class_tsid']]['q'] . ' x ' .$item['label'] . ' for ' . $rules_hash[$item['class_tsid']]['p'],
                   'endtime' => date('Y-m-d H:i:s', strtotime('+24 hours')),
+                  'quantity' => $rules_hash[$item['class_tsid']]['q'],
+                  'price' => $rules_hash[$item['class_tsid']]['p'],
                 )
               ));
               CakeLog::write('cron', $log_entry);
