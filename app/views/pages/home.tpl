@@ -10,6 +10,7 @@
     So far, <strong>{number_format($site_stats.users)}</strong> Glitches have created
     <strong>{number_format($site_stats.rules)}</strong> rules resulting in
     <strong>{number_format($site_stats.auctions)}</strong> auctions.
+    This would have been {number_format($site_stats.currants)}&#8353; <span class="pale">(if all auctions were sold.)</span>
   </p>
 </header>
 {if $session->read('Glitch.player.avatar_url')}

@@ -7,6 +7,7 @@ class PagesController extends AppController {
 	var $uses = array();
 
   function beforeRender() {
+    // This might be bad style
     if(isset($this->viewVars['page']) && $this->viewVars['page'] == 'home') {
 
       if (($site_stats = Cache::read('site_stats')) === false) {
@@ -16,6 +17,7 @@ class PagesController extends AppController {
         App::import('Model', 'Auction');
         $this->Auction = new Auction();
         $this->Auction->recursive = -1;
+        $currants = $this->Auction->query('SELECT SUM(Auction.price) AS total FROM auctions AS Auction WHERE Auction.endtime < NOW()');
 
         App::import('Model', 'Rule');
         $this->Rule = new Rule();
@@ -24,6 +26,7 @@ class PagesController extends AppController {
           'users' => $this->Player->find('count'),
           'auctions' => $this->Auction->find('count'),
           'rules' => $this->Rule->find('count'),
+          'currants' => $currants[0][0]['total'],
         );
 
         Cache::write('site_stats', $site_stats);
