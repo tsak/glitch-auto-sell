@@ -97,4 +97,16 @@ class GlitchApi extends AppModel {
     );
     return parent::find('all', array());
   }
+
+  function auctions_list($page = 1, $per_page = 1000, $defs = 1) {
+    $this->request['uri'] = array(
+      'path' => '/simple/auctions.list',
+      'query' => array(
+        'page' => intval($page),
+        'per_page' => intval($per_page),
+        'defs' => intval($defs),
+      )
+    );
+    return parent::find('all', array());
+  }
 }
