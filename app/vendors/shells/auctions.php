@@ -60,6 +60,6 @@ class AuctionsShell extends Shell {
         }
       }
     } while($page < $pages);
-    $this->out($auctions['total'].' active listings found ('.$new_listings.' new listings, '.$new_items.' new items, '.$pages.' API calls made)');
+    CakeLog::write('auctions', $auctions['total'].' active listings found ('.$new_listings.' new listings, '.$new_items.' new items, '.$pages.' API calls made)');
   }
 }
