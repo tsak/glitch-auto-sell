@@ -29,6 +29,7 @@ class AuctionsShell extends Shell {
               'id' => $auction_id,
               'created' => date('Y-m-d H:i:s', $item['created']),
               'expires' => date('Y-m-d H:i:s', $item['expires']),
+              'category' => $item['category'],
               'item_id' => $item['class_tsid'],
               'count' => $item['count'],
               'cost' => $item['cost'],
