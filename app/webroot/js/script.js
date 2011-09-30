@@ -7,6 +7,14 @@ $(document).ready(function () {
     $('#listing-fee').text(Math.round((v * 0.015 < 3 ? 3 : v * .015)));
   }).change();
 
+  // Calculate and display price per item
+  $('#RulePrice,#RuleQuantity').change(function() {
+    var price = $('#RulePrice').val();
+    var quantity = $('#RuleQuantity').val();
+    var ppi = Math.round(price/quantity*10)/10;
+    $('#price-per-item').text(isNaN(ppi) ? '--' : ppi);
+  }).change();
+
   // Confirm deletion
   $('a.delete').click(function() {
     return confirm('Do you really want to delete this rule and all auction history?');

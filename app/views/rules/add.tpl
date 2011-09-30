@@ -8,7 +8,9 @@
 {$form->input('title', ['label' => 'Title', 'value' => "Autosell `$item.item_def.name_plural`"])}
 {$form->input('quantity', ['label' => 'Quantity <span class="pale">(Defaults to max. slot capacity)</span>', 'value' => $item.item_def.max_stack, 'class' => 'small'])}
 {$form->input('price', ['label' => 'Price <span class="pale">(Defaults to max. quantity x base price)</span>', 'value' => $item.item_def.base_cost*$item.item_def.max_stack, 'class' => 'small'])}
-
+<p>
+  Price per {$item.item_def.name_single}:<br /><span id="price-per-item">0</span>&#8353;
+</p>
 <p>
   <strong>Commission:</strong> <span id="commission">0</span>&#8353; <span class="pale">(8% of final selling price)</span>
   &mdash;

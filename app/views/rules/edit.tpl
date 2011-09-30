@@ -7,7 +7,9 @@
 {$form->input('title')}
 {$form->input('quantity', ['class' => 'small'])}
 {$form->input('price', ['class' => 'small'])}
-
+<p>
+  Price per {$view->data.Rule.name_single}:<br /><span id="price-per-item">0</span>&#8353;
+</p>
 <p>
   <strong>Commission:</strong> <span id="commission">0</span>&#8353; <span class="pale">(8% of final selling price)</span>
   &mdash;
