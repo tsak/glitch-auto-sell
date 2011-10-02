@@ -96,6 +96,7 @@ class CronShell extends Shell {
                   'endtime' => date('Y-m-d H:i:s', strtotime('+24 hours')),
                   'quantity' => $rules_hash[$item['class_tsid']]['q'],
                   'price' => $rules_hash[$item['class_tsid']]['p'],
+                  'profit' => ($rules_hash[$item['class_tsid']]['p'] * 0.015 < 3 ? 3 : $rules_hash[$item['class_tsid']]['p'] * 0.015)*-1,
                 )
               ));
               CakeLog::write('cron', $log_entry);

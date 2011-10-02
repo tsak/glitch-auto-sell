@@ -471,6 +471,11 @@ table {
   font:16px/26px Helvetica, Helvetica Neue, Arial;
 }
 
+table tr.sold td, table tr.sold td a { color: green; }
+table tr.unsold td, table tr.unsold td a { color: red; }
+table tr.cancelled td, table tr.cancelled td a { color: silver; }
+table tr.undetermined td, table tr.undetermined td a { color: gray; }
+
 table tr:hover {
   background: #f0f0f0;
 }

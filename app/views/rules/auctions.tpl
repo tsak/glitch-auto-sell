@@ -11,6 +11,7 @@
     <th>Posted</th>
     <th>Status<sup>1</sup></th>
     <th>Description</th>
+    <th>Profit</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -25,16 +26,18 @@
     <td colspan="99" class="info"> - There are currently no active auctions - </td>
   </tr>
   {/if}
-  <tr{if $current_time_stamp > $auction.endtime|date_format:'U'} class="inactive"{/if}>
+  <tr class="{$auction.status|lower}">
     <td>{$auction.created|relative_date}</td>
-    <td>{if $current_time_stamp > $auction.endtime|date_format:'U'}Ended{else}Active{/if}</td>
+    <td>{if $auction.active}Active{else}{$auction.status|lower|capitalize}{/if}</td>
     <td>{$auction.title|escape}</td>
+    {if $auction.status eq 'SOLD'}{$win = $auction.price}{else}{$win = 0}{/if}
+    <td class="price">{$auction.profit}</td>
     <td class="actions">
       <a href="http://beta.glitch.com/auctions/{$player_ts_id}/{$auction_id}/" class="view" title="View">View</a>
-      <a href="http://beta.glitch.com/auctions/{$player_ts_id}/{$auction_id}/cancel/" class="cancel" title="Cancel">Cancel</a>
+      {if $auction.active}<a href="http://beta.glitch.com/auctions/{$player_ts_id}/{$auction_id}/cancel/" class="cancel" title="Cancel">Cancel</a>{/if}
     </td>
   </tr>
   {/foreach}
   </tbody>
 </table>
-<p><sup>1</sup> It's currently not possible to determine an auction's current status (active, sold or unsold).</p>
+<p><sup>1</sup> Final auction status is currently an experimental feature.</p>
