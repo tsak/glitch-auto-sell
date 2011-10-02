@@ -18,7 +18,11 @@
 </header>
 {if $session->read('Glitch.player.avatar_url')}
   <h3>Hello {$session->read('Glitch.player.player_name')}</h3>
-  <p>Please head straight to <a href="{$html->url('/rules')}">your rules</a>.</p>
+  <p>
+    Before you head to <a href="{$html->url('/rules')}">your rules</a>, please take a moment and join the
+    <a href="http://www.glitch.com/groups/RNVN2BUHK4D2995/">Glitch Autosell group</a>. It's a great place to
+    learn about updates to Glitch Autosell as well as get help and request features.
+  </p>
 {else}
   <h3>Authenticate</h3>
   <p>Please click {$view->element('auth_link')} to authorize <strong>Glitch Autosell</strong> to:</p>
