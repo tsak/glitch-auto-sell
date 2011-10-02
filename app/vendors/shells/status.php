@@ -29,6 +29,10 @@ class StatusShell extends Shell {
       'UNDETERMINED' => 0,
       'FAILED' => 0,
     );
+
+    $log_entry = '';
+    foreach($stats AS $k => $v) $log_entry .= $k . ' ' . $v . ', ';
+
     $c = 0;
     foreach($auctions as $auction) {
       $c++;
