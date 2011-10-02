@@ -1,0 +1,3 @@
+ALTER TABLE `auctions` CHANGE `status` `status` ENUM( 'PENDING', 'SOLD', 'UNSOLD', 'CANCELLED', 'UNDETERMINED' ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'PENDING';
+ALTER TABLE `auctions` ADD `profit` INT NOT NULL DEFAULT '0';
+UPDATE `auctions` SET `profit` = CAST(IF(status = 'SOLD', price*0.92-IF(price*0.015<3,3,price*0.015), IF(price*0.015<3,3,price*0.015)*-1) AS SIGNED) WHERE `profit` = 0;

@@ -11,7 +11,7 @@
     <th>Posted</th>
     <th>Status<sup>1</sup></th>
     <th>Description</th>
-    <th>Profit</th>
+    <th>P/L<sup>2</sup></th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -28,10 +28,9 @@
   {/if}
   <tr class="{$auction.status|lower}">
     <td>{$auction.created|relative_date}</td>
-    <td>{if $auction.active}Active{else}{$auction.status|lower|capitalize}{/if}</td>
+    <td>{if $auction.active}Active{else}{$auction.status|lower|capitalize}{if $auction.status eq 'UNDETERMINED'}<sup>3</sup>{/if}{/if}</td>
     <td>{$auction.title|escape}</td>
-    {if $auction.status eq 'SOLD'}{$win = $auction.price}{else}{$win = 0}{/if}
-    <td class="price">{$auction.profit}</td>
+    <td class="price">{if $auction.active}-{else}{$auction.profit}&#8353;{/if}</td>
     <td class="actions">
       <a href="http://beta.glitch.com/auctions/{$player_ts_id}/{$auction_id}/" class="view" title="View">View</a>
       {if $auction.active}<a href="http://beta.glitch.com/auctions/{$player_ts_id}/{$auction_id}/cancel/" class="cancel" title="Cancel">Cancel</a>{/if}
@@ -40,4 +39,8 @@
   {/foreach}
   </tbody>
 </table>
-<p><sup>1</sup> Final auction status is currently an experimental feature.</p>
+<p class="annotation">
+  <sup>1</sup> Final auction status is currently an experimental feature.<br />
+  <sup>2</sup> Profit or loss.<br />
+  <sup>3</sup> Possibly CANCELLED or UNSOLD.
+</p>
