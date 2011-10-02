@@ -9,8 +9,11 @@
   <p>
     So far, <strong>{number_format($site_stats.users)}</strong> Glitches have created
     <strong>{number_format($site_stats.rules)}</strong> rules resulting in
-    <strong>{number_format($site_stats.auctions)}</strong> auctions.
-    This would have been {number_format($site_stats.currants)}&#8353; <span class="pale">(if all auctions were sold.)</span>
+    <strong>{number_format($site_stats.auctions)}</strong> auctions.<br />
+    Currently, there are
+    {foreach $site_stats.auction_status_count as $status => $count}
+      <strong>{number_format($count)}</strong> <span class="{$status|lower}">{if $status eq 'PENDING'}active{else}{$status|lower}{/if}</span>{if !$count@last}{if $count@iteration == $count@total-1} and{else},{/if}{/if}
+    {/foreach} auctions, netting a total of <strong>{number_format($site_stats.currants)}</strong>&#8353;
   </p>
 </header>
 {if $session->read('Glitch.player.avatar_url')}
