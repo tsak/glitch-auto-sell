@@ -21,7 +21,7 @@
   <p>
     Before you head to <a href="{$html->url('/rules')}">your rules</a>, please take a moment and join the
     <a href="http://www.glitch.com/groups/RNVN2BUHK4D2995/">Glitch Autosell group</a>. It's a great place to
-    learn about updates to Glitch Autosell as well as get help and request features.
+    learn about updates to Glitch Autosell as well as to get help and suggest features.
   </p>
 {else}
   <h3>Authenticate</h3>
