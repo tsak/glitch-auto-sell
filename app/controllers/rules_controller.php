@@ -17,6 +17,7 @@ class RulesController extends AppController {
       'conditions' => array(
         'Rule.player_id' => $this->Session->read('player_id')
       ),
+      'order' => 'Rule.title',
     )));
 
     // Retrieve player statistics
