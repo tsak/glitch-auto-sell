@@ -3,6 +3,18 @@ class CronShell extends Shell {
   var $uses = array('Player', 'Rule', 'GlitchApi', 'Auction');
 
 	function main() {
+    $lockfile = TMP . 'gas.lock';
+    $pid = @file_get_contents($lockfile);
+    if(file_exists($lockfile)) {
+      if (posix_getsid($pid) === false) {
+        file_put_contents($lockfile, getmypid()); // create lockfile
+      } else {
+        exit;
+      }
+    } else {
+      file_put_contents($lockfile, getmypid());
+    }
+
     // Find all players with more than 1 rule
     $players = $this->Player->find('all', array(
       'fields' => array(
@@ -109,6 +121,8 @@ class CronShell extends Shell {
 
       unset($flat_inventory, $rules_hash, $log_entry);
     }
+
+    @unlink($lockfile);
   }
 }
 ?>
