@@ -22,7 +22,11 @@ LIB=${0/%cake/}
 APP=`pwd`
 
 if [ `uname` == 'Darwin' ]; then
-	PHP="/Applications/MAMP/bin/php5/bin/php -d mysql.default_socket=/Applications/MAMP/tmp/mysql/mysql.sock"
+	if [ -f "/Applications/MAMP/bin/php/php5.3.6/bin/php" ] ; then
+		PHP="/Applications/MAMP/bin/php/php5.3.6/bin/php -d mysql.default_socket=/Applications/MAMP/tmp/mysql/mysql.sock"
+	else
+		PHP="/Applications/MAMP/bin/php5/bin/php -d mysql.default_socket=/Applications/MAMP/tmp/mysql/mysql.sock"
+	fi
 else
 	PHP=`which php`
 fi
