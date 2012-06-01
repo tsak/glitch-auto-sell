@@ -87,6 +87,9 @@ class CronShell extends Shell {
       foreach($flat_inventory as $item) {
         if(array_key_exists($item['class_tsid'], $rules_hash)) {
           if($item['count'] >= $rules_hash[$item['class_tsid']]['q']) {
+            // Trying to avoid call rate limitation
+            sleep(1);
+
             // List the item
             $auction = $this->GlitchApi->auctions_create(
               $player['Player']['oauth2_token'],
