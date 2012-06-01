@@ -46,6 +46,9 @@ class CronShell extends Shell {
 
     // Iterate over all found player records
     foreach($players as $player) {
+      // Trying to avoid call rate limitation
+      sleep(1);
+
       $inventory = $RulesController->get_player_inventory($player['Player']['id'], 0, true);
       $flat_inventory = array();
       foreach($inventory['contents'] as $slot_id => $slot) {
