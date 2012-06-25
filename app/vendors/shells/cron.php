@@ -120,6 +120,9 @@ class CronShell extends Shell {
               CakeLog::write('cron', $log_entry);
             } else {
               CakeLog::write('cron_error', $log_entry . ' - Error: ' . $auction['error']);
+
+              // Stopping items/rule processing if a player has reached max_auctions
+              if($auction['error'] == 'max_auctions') break;
             }
           }
         }
