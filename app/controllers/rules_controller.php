@@ -10,7 +10,19 @@ class RulesController extends AppController {
 	var $name = 'Rules';
 
   var $uses = array('GlitchApi', 'Player', 'Rule', 'Auction');
-	
+
+  function beforeFilter() {
+    if($this->Session->check('Glitch.api.access_token')) {
+      $status = $this->GlitchApi->auth_check($this->Session->read('Glitch.api.access_token'));
+      if(!$status['ok']) {
+        $this->redirect(array('controller' => 'auth', 'action' => 'index'));
+      }
+    } else {
+      $this->redirect(array('controller' => 'auth', 'action' => 'index'));
+    }
+    parent::beforeFilter();
+  }
+
 	function index() {
     $this->Rule->recursive = -1;
     $this->set('rules', $this->Rule->find('all', array(
