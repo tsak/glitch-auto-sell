@@ -28,7 +28,6 @@
 			<nav>
 				<ul>
           {if $session->read('Glitch.player.avatar_url')}<li><a href="{$html->url('/rules')}">Your rules</a></li>{/if}
-          <li><a href="{$html->url('/pages/faq')}">FAQ</a></li>
 					<li><a href="{$html->url('/pages/about')}">About</a></li>
             <li><a href="{$html->url('/pages/contact')}">Contact</a></li>
             <li><a href="{$html->url('/pages/credits')}">Credits</a></li>
