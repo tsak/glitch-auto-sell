@@ -32,6 +32,7 @@
 					<li><a href="{$html->url('/pages/about')}">About</a></li>
             <li><a href="{$html->url('/pages/contact')}">Contact</a></li>
             <li><a href="{$html->url('/pages/credits')}">Credits</a></li>
+          {if $session->read('Glitch.player.avatar_url')}<li><a href="{$html->url('/auth/logout')}">Logout</a></li>{/if}
 				</ul>
 			</nav>
 		</header>

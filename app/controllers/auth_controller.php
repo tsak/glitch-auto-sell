@@ -41,6 +41,11 @@ class AuthController extends AppController {
 
   }
 
+  function logout() {
+    $this->Session->destroy();
+    $this->redirect('/');
+  }
+
   function success() {
     $glitch_player = $this->GlitchApi->players_info($this->Session->read('Glitch.api.access_token'));
     $this->Session->write('Glitch.player', $glitch_player);
