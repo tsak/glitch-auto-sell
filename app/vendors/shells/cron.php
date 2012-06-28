@@ -52,7 +52,7 @@ class CronShell extends Shell {
       $inventory = $RulesController->get_player_inventory($player['Player']['id'], 0, true);
 
       // If a player's inventory is empty, continue with next player
-      if(!is_array($inventory['contents'])) break;
+      if(!is_array($inventory['contents'])) continue;
 
       $flat_inventory = array();
       foreach($inventory['contents'] as $slot_id => $slot) {
