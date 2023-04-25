@@ -62,8 +62,8 @@
       {if Configure::read('debug') == 2}<div id="sqldump" style="display: none;">{$view->element('sqldump')}</div>{/if}
 		</footer>
 	</div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-1.6.3.min.js"><\/script>')</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-3.6.4.min.js"><\/script>')</script>
 
 {$javascript->link('script')}
 
